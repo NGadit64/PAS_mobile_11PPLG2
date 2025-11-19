@@ -16,26 +16,26 @@ class TableController extends GetxController {
   }
 
   Future<void> fetchAPITablePremiere() async {
-    const url =
-        'https://api.tvmaze.com/shows';
-    try {
-      isLoading.value = true;
-      final response = await http.get(Uri.parse(url));
+  const url = 'https://api.tvmaze.com/shows';
 
-      if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
+  try {
+    isLoading.value = true;
 
-        final List listTeams = data['teams'];
-        tableStandings.assignAll(
-          listTeams.map((e) => TablePremiereModel.fromJson(e)).toList(),
-        );
-      } else {
-        Get.snackbar("Error", "Gagal mengambil data: ${response.statusCode}");
-      }
-    } catch (e) {
-      Get.snackbar("Error", e.toString());
-    } finally {
-      isLoading.value = false;
+    final response = await http.get(Uri.parse(url));
+
+    if (response.statusCode == 200) {
+      final List data = jsonDecode(response.body);
+
+      tableStandings.assignAll(
+        data.map((e) => TablePremiereModel.fromJson(e)).toList(),
+      );
+    } else {
+      Get.snackbar("Error", "Gagal mengambil data: ${response.statusCode}");
     }
+  } catch (e) {
+    Get.snackbar("Error", e.toString());
+  } finally {
+    isLoading.value = false;
   }
+}
 }

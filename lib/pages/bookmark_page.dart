@@ -28,20 +28,26 @@ class BookmarkPage extends StatelessWidget {
             final item = controller.bookmarks[index];
 
             return Card(
-              child: ListTile(
-                leading: CircleAvatar(
-                  backgroundImage: NetworkImage(item['badge']),
-                ),
-                title: Text(item['teamName']),
-                subtitle: Text(item['stadium']),
-                trailing: IconButton(
-                  icon: Icon(Icons.delete),
-                  onPressed: () {
-                    controller.deleteBookmark(item['id']);
-                  },
-                ),
-              ),
-            );
+  margin: const EdgeInsets.all(10),
+  child: ListTile(
+    leading: CircleAvatar(
+      radius: 30,
+      backgroundImage: NetworkImage(item['image']),
+    ),
+    title: Text(
+      item['name'],
+      style: const TextStyle(fontWeight: FontWeight.bold),
+    ),
+    subtitle: Text("Genres: ${item['genre']}"),
+    trailing: IconButton(
+      icon: const Icon(Icons.delete, color: Colors.red),
+      onPressed: () {
+        controller.deleteBookmark(item['id']);
+      },
+    ),
+  ),
+);
+
           },
         );
       }),

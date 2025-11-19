@@ -40,14 +40,15 @@ class DBHelper {
     );
   }
 
-  Future<int> addBookmark(TablePremiereModel team) async {
-    final client = await db;
-    return client.insert('bookmarks', {
-      'name': team.name,
-      'image': team.image,
-      'genre': team.genres,
-    });
-  }
+Future<int> addBookmark(TablePremiereModel team) async {
+  final client = await db;
+  return client.insert('bookmarks', {
+    'name': team.name,
+    'image': team.image.original,
+    'genre': team.genres.join(", "),
+  });
+}
+
 
   Future<List<Map<String, dynamic>>> getBookmarks() async {
     final client = await db;
