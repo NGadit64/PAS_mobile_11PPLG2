@@ -80,12 +80,18 @@ class RegisterPage extends StatelessWidget {
                 letterSpacing: 1.1,
               ),
             ),
-            CustomButton(
-              text: "Login",
-              textColor: const Color.fromARGB(255, 255, 255, 255),
-              backgroundColor: const Color.fromARGB(255, 77, 18, 18),
-              onPressed: controller.login,
-            ),
+TextButton(
+  onPressed: controller.login,
+  child: const Text(
+    "login",
+    style: TextStyle(
+      fontSize: 18,
+      color: Colors.blue,
+      fontWeight: FontWeight.bold,
+    ),
+  ),
+)
+
           ],
         ),
       ),

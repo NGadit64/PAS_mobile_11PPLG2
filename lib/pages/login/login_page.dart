@@ -55,12 +55,18 @@ class LoginPage extends StatelessWidget {
                       color: const Color.fromARGB(221, 0, 0, 0),
                       fontWeight: FontWeight.bold,
                       letterSpacing: 1.1,),),
-            CustomButton(
-                    text: "Register",
-                    textColor: const Color.fromARGB(255, 255, 255, 255),
-                    backgroundColor: const Color.fromARGB(255, 77, 18, 18),
-                    onPressed: controller.register,
-                  ),
+            TextButton(
+  onPressed: controller.register,
+  child: const Text(
+    "Register",
+    style: TextStyle(
+      fontSize: 18,
+      color: Colors.blue,
+      fontWeight: FontWeight.bold,
+    ),
+  ),
+)
+
           ],
         ),
       ),

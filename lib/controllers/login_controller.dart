@@ -46,7 +46,7 @@ class LoginController extends GetxController {
           // simpan username (opsional)
           await prefs.setString("username", usernameC.text);
 
-          Get.offAllNamed(AppRoutes.dashboardPage);
+          Get.offAllNamed(AppRoutes.dashboardResponsive);
         }
       } else {
         Get.snackbar(
